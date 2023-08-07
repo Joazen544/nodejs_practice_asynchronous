@@ -37,14 +37,14 @@ const getDogPic = async () => {
     await appendFilePro(`${__dirname}/dog-image.txt`, res.body.message);
     countNum++;
     console.log(`${countNum} random dog image saved to file`);
+
+    if (countNum < 500) await getDogPic();
   } catch (err) {
     console.log(err.message);
   }
 };
 
-for (let i = 0; i < 250; i++) {
-  getDogPic();
-}
+getDogPic();
 
 /*
 readFilePro(`${__dirname}/dog.txt`)
